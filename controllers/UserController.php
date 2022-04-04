@@ -15,7 +15,6 @@ class UserController
     }
     public function save()
     {
-     
         if (isset($_POST)) {
 
             $name = isset($_POST['name'])? $_POST['name']:false ;

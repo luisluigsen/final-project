@@ -22,6 +22,7 @@
 
                             </div>
                         </form>
+                        <a href="<?=base_url?>User/register">Sign up here <i class="fas fa-user" aria-hidden="true"></i></a>
                         <br />
                     <?php else : ?>
                         <div class="card border-dark mb-3">
@@ -31,11 +32,13 @@
                             <div class="card-body">
                                 <h5><?= $_SESSION['identity']->name ?> <?= $_SESSION['identity']->surname ?><i class="fas fa-home"></i></h5>
                             </div>
+                    <?php endif; ?>
+                        
+                    <?php if(isset($_SESSION['identity'])):?>    
                             <div class="card-footer">
                                 <a href="<?=base_url?>User/logout">End Session <i class="fas fa-arrow-right " ></i> </a>
                             </div>
                         </div>
-
                     <?php endif; ?>
 
                     </div>

@@ -65,6 +65,32 @@
 
                             </ul>
                         </li>
+                        <?php if(isset($_SESSION['admin'])): ?>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownAdmin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Admin
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdminUl">
+                                <li>
+                                    <a class="dropdown-item " href="#">
+                                        <i class="fas fa-shopping-cart"></i> Manage Orders
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-tags"></i> Manage Products
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="<?=base_url?>Category/index">
+                                        <i class="fas fa-star"></i> Manage Categories
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <?php endif; ?>
+                        
 
                     </ul>
                     <form class="d-flex">

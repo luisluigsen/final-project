@@ -92,16 +92,26 @@ class UserModel
 
     }
 
-    public function nameValidate()
-    {
-        return !empty($this->name)&& !is_numeric($this->name)&& !preg_match('/[0-9]/', $this->name);
-
+    public function nameValidate($nameValidate)
+    {   
+        $result= false;
+        
+        if (!empty($this->$nameValidate)&& !is_numeric($this->$nameValidate)&& !preg_match('/[0-9]/', $this->$nameValidate))
+        {
+            $result= true;
+            
+        }
+        else
+        {
+            $result = false;
+        }
+        return $result;
      
     }
 
     public function lastNameValidate()
     {
-        return !empty($this->surname)&& !is_numeric($this->surname)&& !preg_match('/[0-9]/', $this->surname);
+        return empty($this->surname)&& !is_numeric($this->surname)&& !preg_match('/[0-9]/', $this->surname);
      
     }
 
