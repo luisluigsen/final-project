@@ -1,7 +1,6 @@
 <h1 class="text-white">Join us</h1>
 
-<?php
-if(isset($_SESSION['register'])&& $_SESSION['register']=='complete'):?>
+<?php if(isset($_SESSION['register'])&& $_SESSION['register']=='complete'):?>
     <div class="text-success">Register complete</div>
 <?php elseif(isset($_SESSION['register'])&& $_SESSION['register']=='failed'):?>
     <div class="text-danger">Register incomplete</div>

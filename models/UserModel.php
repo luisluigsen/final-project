@@ -120,5 +120,27 @@ class UserModel
         return $result;
     }
 
+    public function login()
+    {
+        $result = false;
+        $emailVerify= $this->email;
+        $passwordVerify= $this->password;
+
+        $sql = "SELECT *FROM users WHERE email ='$emailVerify'";
+        $login = $this->db->query($sql);
+
+        if($login && $login->num_rows==1)
+        {
+            $user = $login->fetch_object();
+            $verify = password_verify($passwordVerify, $user->password); #posible error
+
+            if($verify)
+            {  
+                $result = $user;
+            }
+        }
+        return $result;
+    }
+
     
 }
