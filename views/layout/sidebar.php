@@ -5,15 +5,15 @@
                         <h1>Sign in</h1>
                     </div>
                     <div class="card-body bg-white bg-opacity-50">
-                        <form action="" method="post">
+                        <form action="<?=base_url ?>User/login" method="POST">
                             <div class="form-group">
                                 <div class="form-group">
                                     <label for=""></label>
-                                    <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="Email">
+                                    <input type="email" class="form-control" name="email" id="name" aria-describedby="emailHelpId" placeholder="Email">
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label"></label>
-                                    <input type="password" class="form-control" name="" id="" placeholder="Password">
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                                 </div>
                                 <div class="mb3">
                                     <button type="submit" class="btn btn-dark">Submit</button>

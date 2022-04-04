@@ -1,12 +1,9 @@
 <?php
 
-    function autoload(){
+    function autoload($class){
 
-        include_once "controllers/UserController.php";
-        include_once "controllers/ProductController.php";
-        include_once "controllers/OrderController.php";
-        include_once "controllers/CategoryController.php";
-        include_once "controllers/ErrorController.php";
+     include_once "controllers/" . strtolower($class) . '.php';
+      
     }
 
     spl_autoload_register('autoload');
