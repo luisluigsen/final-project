@@ -13,7 +13,7 @@ class CategoryModel
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -21,7 +21,7 @@ class CategoryModel
 
     /**
      * Get the value of name
-     */ 
+     */
     public function getName()
     {
         return $this->name;
@@ -31,27 +31,23 @@ class CategoryModel
      * Set the value of id
      *
      * @return  self
-     */ 
+     */
     public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
     }
 
     /**
      * Set the value of name
      *
      * @return  self
-     */ 
+     */
     public function setName($name)
     {
-        $this->name = $name;
-
-        return $this;
+        $this->name = $this->db->real_escape_string($name); 
     }
 
-    public function getAll() 
+    public function getAll()
     {
         $categories = $this->db->query("SELECT *FROM categories ORDER BY id DESC;");
         return $categories;
@@ -59,6 +55,14 @@ class CategoryModel
 
     public function save()
     {
+        $sql =  "INSERT INTO categories VALUES (NULL ,'{$this->getName()}');";
+        $save = $this->db->query($sql);
 
+        $result = false;
+
+        if ($save) {
+            $result = true;
+        }
+        return $result;
     }
 }

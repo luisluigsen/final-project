@@ -15,6 +15,6 @@
         </tbody>
         <?php endwhile; ?>
     </table>
-    <a href="" class="btn btn-outline-success" role="button">Add Category</a>
+    <a href="<?=base_url ?>Category/create" class="btn btn-outline-success" role="button">Add Category</a>
     
 </div>
