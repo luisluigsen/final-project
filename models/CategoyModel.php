@@ -53,6 +53,13 @@ class CategoryModel
         return $categories;
     }
 
+    public function getOne()
+    {
+        $categories = $this->db->query("SELECT *FROM categories WHERE id={$this->getId()};");
+        return $categories->fetch_object( );
+    }
+
+    
     public function save()
     {
         $sql =  "INSERT INTO categories VALUES (NULL ,'{$this->getName()}');";
@@ -61,6 +68,32 @@ class CategoryModel
         $result = false;
 
         if ($save) {
+            $result = true;
+        }
+        return $result;
+    }
+
+    public function delete()
+    {
+        $sql =  "DELETE FROM categories WHERE id={$this->id}";
+        $delete = $this->db->query($sql);
+
+        $result = false;
+
+        if ($delete) {
+            $result = true;
+        }
+        return $result;
+    }
+
+    public function edit()
+    {
+        $sql =  "UPDATE categories SET name = '{$this->getName()}'.{$this->id}";
+        $edit = $this->db->query($sql);
+
+        $result = false;
+
+        if ($edit) {
             $result = true;
         }
         return $result;
