@@ -10,13 +10,16 @@
             </tr>
         </thead>
         <tbody>
-            <?php while ($pro = $products->fetch_object()) : ?>
-                <td><?= $pro->id; ?></td>
-                <td><?= $pro->name; ?></td>
-                <td><?= $pro->price ?></td>
-                <td><?= $pro->stock; ?></td>
+            <?php while ($pro= $products->fetch_object()) : ?>
+                <tr>
+                    <td><?= $pro->id; ?></td>
+                    <td><?= $pro->name; ?></td>
+                    <td><?= $pro->price; ?></td>
+                    <td><?= $pro->stock; ?></td>
+                </tr>
+            <?php endwhile; ?>
         </tbody>
-    <?php endwhile; ?>
+
     </table>
     <a href="<?= base_url ?>Product/create" class="btn btn-outline-success" role="button">Create Product</a>
 </div>

@@ -9,20 +9,21 @@
         </thead>
         <tbody>
             <?php while ($cat = $categories->fetch_object()) : ?>
-                <td><?= $cat->id; ?></td>
-                <td class="d-flex"><?= $cat->name; ?>
-                <td class="bg-dark">
-                    <a href="<?= base_url ?>Category/edit&id=<?= $cat->id; ?> " class="btn btn-outline-success" role="button">
-                        <i class="fa fa-pen text-success"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="<?= base_url ?>Category/delete&id=<?= $cat->id; ?> " class="btn btn-outline-danger " role="button">
-                        <i class="fa fa-trash text-danger"></i>
-                    </a>
-                </td>
-                </td>
-
+                <tr>
+                    <td><?= $cat->id; ?></td>
+                    <td class="d-flex"><?= $cat->name; ?>
+                    <td class="bg-dark">
+                        <a href="<?= base_url ?>Category/edit&id=<?= $cat->id; ?> " class="btn btn-outline-success" role="button">
+                            <i class="fa fa-pen text-success"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="<?= base_url ?>Category/delete&id=<?= $cat->id; ?> " class="btn btn-outline-danger " role="button">
+                            <i class="fa fa-trash text-danger"></i>
+                        </a>
+                    </td>
+                    </td>
+                </tr>
         </tbody>
     <?php endwhile; ?>
     </table>
