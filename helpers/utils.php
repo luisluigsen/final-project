@@ -22,4 +22,12 @@
                 return true;
             }
         }
+
+        public static function showCategories()
+        {
+            require_once "models/CategoyModel.php";
+            $category = new CategoryModel();
+            $categories=$category->getAll();
+            return $categories;
+        }
     }

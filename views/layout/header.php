@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="<?=base_url?>vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url ?>vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
     <script src=" https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -14,6 +14,7 @@
 <body class="bg-dark bg-gradient">
     <!-- nav -->
     <div class="conatiner">
+        <?php $categories = Utils::showCategories(); ?>
         <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
             <div class="container-fluid">
                 <a class="navbar-brand text-white" href="#">
@@ -30,18 +31,11 @@
                         <li class="nav-item">
                             <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
                         </li>
+                        <?php while($cat = $categories->fetch_object()): ?>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Category 1</a>
+                            <a class="nav-link text-white" href="#"><?=$cat->name?></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Category 2</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Category 4</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Category 5</a>
-                        </li>
+                        <?php endwhile; ?>
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Featured
@@ -65,32 +59,32 @@
 
                             </ul>
                         </li>
-                        <?php if(isset($_SESSION['admin'])): ?>
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownAdmin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Admin
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdminUl">
-                                <li>
-                                    <a class="dropdown-item " href="#">
-                                        <i class="fas fa-shopping-cart"></i> Manage Orders
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-tags"></i> Manage Products
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="<?=base_url?>Category/index">
-                                        <i class="fas fa-star"></i> Manage Categories
-                                    </a>
-                                </li>
+                        <?php if (isset($_SESSION['admin'])) : ?>
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownAdmin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Admin
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdminUl">
+                                    <li>
+                                        <a class="dropdown-item " href="#">
+                                            <i class="fas fa-shopping-cart"></i> Manage Orders
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="<?= base_url ?>Product/manage">
+                                            <i class="fas fa-tags"></i> Manage Products
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="<?= base_url ?>Category/index">
+                                            <i class="fas fa-star"></i> Manage Categories
+                                        </a>
+                                    </li>
 
-                            </ul>
-                        </li>
+                                </ul>
+                            </li>
                         <?php endif; ?>
-                        
+
 
                     </ul>
                     <form class="d-flex">
@@ -124,16 +118,16 @@
         <div id="carouselExampleControls" class="carousel slide p-2" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="<?=base_url?>img/camiseta1.jpg" class="d-block w-100" alt="...">
+                    <img src="<?= base_url ?>img/camiseta1.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="<?=base_url?>img/camiseta2.jpg" class="d-block w-100" alt="...">
+                    <img src="<?= base_url ?>img/camiseta2.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="<?=base_url?>img/camiseta3.jpg" class="d-block w-100" alt="...">
+                    <img src="<?= base_url ?>img/camiseta3.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="<?=base_url?>img/camiseta4.jpg" class="d-block w-100" alt="...">
+                    <img src="<?= base_url ?>img/camiseta4.jpg" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
