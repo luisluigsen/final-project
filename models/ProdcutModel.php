@@ -132,12 +132,25 @@ class ProductModel
     {
      
        
-        $sql =  "INSERT INTO products VALUES (NULL, {$this->getCategory_id()},'{$this->getName()}','{$this->getDescription()}', {$this->getPrice()},{$this->getStock()}, null , CURDATE(), null);";
+        $sql =  "INSERT INTO products VALUES (NULL, {$this->getCategory_id()},'{$this->getName()}','{$this->getDescription()}', {$this->getPrice()},{$this->getStock()}, null , CURDATE(), '{$this->getImage()}');";
         $save = $this->db->query($sql);
       
         $result = false;
     
         if ($save) {
+            $result = true;
+        }
+        return $result;
+    }
+
+    public function delete()
+    {
+        $sql =  "DELETE FROM products WHERE id={$this->id}";
+        $delete = $this->db->query($sql);
+
+        $result = false;
+
+        if ($delete) {
             $result = true;
         }
         return $result;

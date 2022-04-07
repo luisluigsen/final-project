@@ -61,15 +61,15 @@ class CategoryController
     {
         Utils::isAdmin();
         if (isset($_GET)) {
-            
-            $id= $_GET['id'];
+
+            $id = $_GET['id'];
             $edit = true;
 
             $category = new CategoryModel();
             $category->setId($id);
 
             $cat = $category->getOne();
-            
+
             require_once "views/categories/create.php";
         } else {
             header("Location:" . base_url . "Category/index");
