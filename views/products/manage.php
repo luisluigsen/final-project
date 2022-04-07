@@ -10,7 +10,18 @@
                 <h2 class="text-danger">The Product has not been created correctly</h2>
             </div>
         <?php endif; ?>  
-        <?php Utils::deleteSession('product'); ?>  
+        <?php Utils::deleteSession('product'); ?>
+
+        <?php if(isset($_SESSION['delete'])&&$_SESSION['delete']== 'complete'): ?>
+            <div class="container">
+                <h2 class="text-success">The Product has been drop correctly</h2>
+            </div>
+        <?php elseif(isset($_SESSION['delete'])&&$_SESSION['delete']!='complete'):  ?>
+            <div class="container">
+                <h2 class="text-danger">The Product has not been drop correctly</h2>
+            </div>
+        <?php endif; ?>  
+        <?php Utils::deleteSession('delete'); ?>  
         <thead>
             <tr>
                 <th>ID</th>

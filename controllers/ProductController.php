@@ -83,11 +83,25 @@ class ProductController
             } else {
                 $_SESSION['delete'] = 'failed';
             }
+        } else {
             $_SESSION['delete'] = 'failed';
-        }else{
-        $_SESSION['delete'] = 'failed';
         }
         header("Location:" . base_url . "Product/manage");
     }
-    
+
+    public function edit()
+    {
+        if (isset($_GET)) {
+
+            $id = $_GET['id'];
+            $edit = true;
+            
+            $product = new ProductModel();
+            $product->setId($id);
+            $pro=$product->getOne();
+            require_once 'views/products/create.php';
+        }else{
+            header("Location:".base_url."Product/manage");
+        }
+    }
 }

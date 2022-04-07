@@ -127,6 +127,12 @@ class ProductModel
         $products = $this->db->query("SELECT *FROM products ORDER BY id DESC");
         return $products;
     }
+
+    public function getOne()
+    {
+        $products = $this->db->query("SELECT *FROM products WHERE id ={$this->getId()}");
+        return $products->fetch_object();
+    }
     
     public function save()
     {
