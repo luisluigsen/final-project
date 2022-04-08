@@ -30,40 +30,48 @@ class ProductController
     {
         Utils::isAdmin();
         if (isset($_POST)) {
+            $name = isset($_POST['name']) ? $_POST['name'] : false;
+            $description = isset($_POST['description']) ? $_POST['description'] : false;
+            $price = isset($_POST['price']) ? $_POST['price'] : false;
+            $stock = isset($_POST['stock']) ? $_POST['stock'] : false;
+            $category = isset($_POST['category']) ? $_POST['category'] : false;
+            // $imagen = isset($_POST['imagen']) ? $_POST['imagen'] : false;
 
-            $product = new ProductModel();
-            $product->setName($_POST['name']);
-            $product->setDescription($_POST['description']);
-            $product->setPrice($_POST['price']);
-            $product->setStock($_POST['stock']);
-            $product->setCategory_id($_POST['category']);
+            if ($name && $description && $price && $stock && $category) {
+                $product = new ProductModel();
+                $product->setName($name);
+                $product->setDescription($description);
+                $product->setPrice($price);
+                $product->setStock($stock);
+                $product->setCategory_id($category);
 
-            if (isset($_FILES['image'])) {
-                $file = $_FILES['image'];
-                $filename = $file['name'];
-                $mimetype = $file['type'];
+                if (isset($_FILES['image'])) {
+                    $file = $_FILES['image'];
+                    $filename = $file['name'];
+                    $mimetype = $file['type'];
 
-                if ($mimetype == "image/jpg" || $mimetype == "image/jpeg" || $mimetype == "image/png" || $mimetype == "image/svg" || $mimetype == "image/gif") {
-                    if (!is_dir('uploads/images')) {
-                        mkdir('uploads/images', 0777, true);
+                    if ($mimetype == "image/jpg" || $mimetype == "image/jpeg" || $mimetype == "image/png" || $mimetype == "image/svg" || $mimetype == "image/gif"){
+                        if (!is_dir('uploads/images')) {
+                            mkdir('uploads/images', 0777, true);
+                        }
+
+                        $product->setImage($filename);
+                        move_uploaded_file($file['tmp_name'], 'uploads/images'. $filename);
                     }
-
-                    $product->setImage($_FILES['image']);
-                    move_uploaded_file($file['tmp_name'], 'uploads/images' . $filename);
                 }
-            }
 
-            $save = $product->save();
+                $save = $product->save();
 
 
-            if ($save) {
-                $_SESSION['product'] = 'complete';
+                if ($save) {
+                    $_SESSION['product'] = 'complete';
+                } else {
+                    $_SESSION['product'] = 'failed';
+                }
             } else {
                 $_SESSION['product'] = 'failed';
-            }
-        } else {
-            $_SESSION['product'] = 'failed';
-
+            }   
+        }else{
             $_SESSION['product'] = 'failed';
         }
         header("Location:" . base_url . "Product/manage");
@@ -95,13 +103,13 @@ class ProductController
 
             $id = $_GET['id'];
             $edit = true;
-            
+
             $product = new ProductModel();
             $product->setId($id);
-            $pro=$product->getOne();
+            $pro = $product->getOne();
             require_once 'views/products/create.php';
-        }else{
-            header("Location:".base_url."Product/manage");
+        } else {
+            header("Location:" . base_url . "Product/manage");
         }
     }
 }

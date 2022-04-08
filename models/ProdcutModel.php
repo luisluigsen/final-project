@@ -161,6 +161,21 @@ class ProductModel
         }
         return $result;
     }
+
+    public function edit()
+    {
+     
+       
+        $sql =  "UPDATE products SET name =(NULL, {$this->getCategory_id()},'{$this->getName()}','{$this->getDescription()}', {$this->getPrice()},{$this->getStock()}, null , CURDATE(), '{$this->getImage()}');";
+        $save = $this->db->query($sql);
+      
+        $result = false;
+    
+        if ($save) {
+            $result = true;
+        }
+        return $result;
+    }
 }
 
     
