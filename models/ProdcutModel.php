@@ -166,7 +166,14 @@ class ProductModel
     {
      
        
-        $sql =  "UPDATE products SET name =(NULL, {$this->getCategory_id()},'{$this->getName()}','{$this->getDescription()}', {$this->getPrice()},{$this->getStock()}, null , CURDATE(), '{$this->getImage()}');";
+        $sql =  "UPDATE products SET  name= '{$this->getName()}', description='{$this->getDescription()}', price={$this->getPrice()},stock={$this->getStock()},category_id = {$this->getCategory_id()}";
+        
+        if($this->getImage() != null){
+
+            $sql.=",image='{$this->getImage()}'";
+        }
+
+        $sql .="WHERE id= {$this->id};";
         $save = $this->db->query($sql);
       
         $result = false;

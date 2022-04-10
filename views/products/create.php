@@ -3,7 +3,7 @@
     <div class="container">
         <h1 class="m-0 text-light">Edit Products <?= $pro->name ?></h1>
     </div>
-    <?php $url_action = base_url . "Product/edit&id=" . $pro->id; ?>
+    <?php $url_action = base_url . "Product/save&id=" . $pro->id; ?>
     <?php else : ?>
     <div class="container">
         <h1 class="m-0 text-light">Create New Products</h1>

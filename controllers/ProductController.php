@@ -50,18 +50,23 @@ class ProductController
                     $filename = $file['name'];
                     $mimetype = $file['type'];
 
-                    if ($mimetype == "image/jpg" || $mimetype == "image/jpeg" || $mimetype == "image/png" || $mimetype == "image/svg" || $mimetype == "image/gif"){
+                    if ($mimetype == "image/jpg" || $mimetype == "image/jpeg" || $mimetype == "image/png" || $mimetype == "image/svg" || $mimetype == "image/gif") {
                         if (!is_dir('uploads/images')) {
                             mkdir('uploads/images', 0777, true);
                         }
 
                         $product->setImage($filename);
-                        move_uploaded_file($file['tmp_name'], 'uploads/images'. $filename);
+                        move_uploaded_file($file['tmp_name'], 'uploads/images' . $filename);
                     }
                 }
 
-                $save = $product->save();
-
+                if (isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                    $product->setId($id);
+                    $save = $product->edit();
+                } else {
+                    $save = $product->save();
+                }
 
                 if ($save) {
                     $_SESSION['product'] = 'complete';
@@ -70,8 +75,8 @@ class ProductController
                 }
             } else {
                 $_SESSION['product'] = 'failed';
-            }   
-        }else{
+            }
+        } else {
             $_SESSION['product'] = 'failed';
         }
         header("Location:" . base_url . "Product/manage");
