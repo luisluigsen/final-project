@@ -1,6 +1,7 @@
 <?php
 
 require_once 'models/CategoyModel.php';
+require_once 'models/ProdcutModel.php';
 
 class CategoryController
 {
@@ -11,6 +12,23 @@ class CategoryController
         $category = new CategoryModel;
         $categories = $category->getAll();
         require_once 'views/categories/index.php';
+    }
+
+    public function look()
+    {
+        if(isset($_GET['id'])){
+            $id=($_GET['id']);
+            #catch categories
+            $category=new CategoryModel();
+            $category->setId($id);
+            $category = $category->getOne();
+            #catch products
+            $product=new ProductModel();
+            $product->setCategory_id($id);
+            $products=$product->getAllcategories();
+            
+        }
+        require_once "views/categories/look.php";
     }
 
     public function create()
@@ -26,7 +44,24 @@ class CategoryController
 
             $category = new CategoryModel();
             $category->setName($_POST['name']);
-            $category->save();
+
+            if(isset($_GET['id'])){
+                $id = $_GET['id'];
+                $category->setId($id);
+                $save = $category->edit();
+            }
+            else{
+                
+                $save=$category->save();
+            }
+
+            if($save){
+                $_SESSION['category'] = 'complete';
+            } else{
+                $_SESSION['category'] = 'failed';
+            }
+        }else{
+            $_SESSION['category'] = 'failed';
         }
         header("Location:" . base_url . "Category/index");
     }

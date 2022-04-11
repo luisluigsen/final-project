@@ -127,6 +127,22 @@ class ProductModel
         $products = $this->db->query("SELECT *FROM products ORDER BY id DESC");
         return $products;
     }
+    
+    public function getAllcategories()
+    {
+        $sql= "SELECT p.*, c.name AS 'catname' FROM products p "
+            . "INNER JOIN categories c ON c.id = p.category_id "
+            . "WHERE p.category_id = {$this->getCategory_id()} "
+            . "ORDER BY id DESC ";
+        $products = $this->db->query($sql);
+        return $products;
+    }
+
+    public function getRandom($limit)
+    {
+        $products = $this->db->query("SELECT *FROM products ORDER BY RAND() LIMIT $limit");
+        return $products;
+    }
 
     public function getOne()
     {

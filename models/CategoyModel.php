@@ -47,6 +47,7 @@ class CategoryModel
         $this->name = $this->db->real_escape_string($name); 
     }
 
+    
     public function getAll()
     {
         $categories = $this->db->query("SELECT *FROM categories ORDER BY id DESC;");
@@ -55,7 +56,7 @@ class CategoryModel
 
     public function getOne()
     {
-        $categories = $this->db->query("SELECT *FROM categories WHERE id={$this->getId()};");
+        $categories = $this->db->query("SELECT *FROM categories WHERE id={$this->getId()}");
         return $categories->fetch_object( );
     }
 
@@ -88,12 +89,13 @@ class CategoryModel
 
     public function edit()
     {
-        $sql =  "UPDATE categories SET name = '{$this->getName()}'.{$this->id}";
-        $edit = $this->db->query($sql);
+        $sql =  "UPDATE categories SET name ='{$this->getName()}' WHERE id={$this->getId()}";
+        $save = $this->db->query($sql);
+
 
         $result = false;
 
-        if ($edit) {
+        if ($save) {
             $result = true;
         }
         return $result;

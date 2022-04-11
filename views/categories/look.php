@@ -1,7 +1,12 @@
+<?php if(isset($category)): ?>
 <div class="col-md-8 pt-0 mb-3">
+    <h1><?=$category->name?></h1>
+    <?php if($products->num_rows == 0): ?>
+    <p>Don't have products to look</p>
+    <?php else: ?>
     <div class="container d-flex">
         <div class="row">
-                <h1 class="text-white m-0">Algunos de nuestros productos</h1>
+            <h1 class="text-white m-0">Algunos de nuestros productos</h1>
         </div>
     </div>
     <div class="container">
@@ -30,3 +35,7 @@
         </div>
     </div>
 </div>
+<?php endif; ?>
+<?php else: ?>
+<h1>The category doesn't exist</h1>
+<?php endif;?>

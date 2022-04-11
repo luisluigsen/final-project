@@ -33,7 +33,7 @@
                         </li>
                         <?php while($cat = $categories->fetch_object()): ?>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#"><?=$cat->name?></a>
+                            <a class="nav-link text-white" href="<?=base_url?>Category/look&id=<?=$cat->id?>"><?=$cat->name?></a>
                         </li>
                         <?php endwhile; ?>
                         <li class="nav-item dropdown ">

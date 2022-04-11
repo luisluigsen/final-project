@@ -6,7 +6,8 @@ class ProductController
 
     public function index()
     {
-
+        $product=new ProductModel();
+        $products=$product->getRandom(6);
         require_once "views/products/freatures.php";
     }
 
@@ -111,6 +112,7 @@ class ProductController
 
             $product = new ProductModel();
             $product->setId($id);
+            
             $pro = $product->getOne();
             require_once 'views/products/create.php';
         } else {
