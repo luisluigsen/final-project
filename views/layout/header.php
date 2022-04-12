@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 
-<body class="bg-dark bg-gradient">
+<body class="bg-dark bg-gradient p-2">
     <!-- nav -->
     <div class="conatiner">
         <?php $categories = Utils::showCategories(); ?>
@@ -29,7 +29,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active text-white" aria-current="page" href="<?=base_url?>">Home</a>
                         </li>
                         <?php while($cat = $categories->fetch_object()): ?>
                         <li class="nav-item">
@@ -99,9 +99,9 @@
     <!-- Body Page -->
 
 
-    <div class="container p-2">
+    <div class="container-fluid p-2">
         <div class="jumbotron">
-            <h1 class="display-3 text-white">Tshirts Store</h1>
+            <h1 class="display-3 text-white">T-shirts Store</h1>
             <p class="lead text-white">Don't miss it</p>
             <hr class="my-2 bg-white">
 
@@ -114,8 +114,8 @@
 
 
     <!-- carousel -->
-    <div class="container p-2">
-        <div id="carouselExampleControls" class="carousel slide p-2" data-bs-ride="carousel">
+    <div class="container-fluid p-0">
+        <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="<?= base_url ?>img/camiseta1.jpg" class="d-block w-100" alt="...">
@@ -139,8 +139,4 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-    </div>
 
-    <!-- Lateral izquierdo Formulario-->
-
-    <div class="container p-2 ">

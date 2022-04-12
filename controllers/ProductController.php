@@ -11,6 +11,21 @@ class ProductController
         require_once "views/products/freatures.php";
     }
 
+    public function look()
+    {
+        if (isset($_GET)) {
+
+            $id = $_GET['id'];
+
+            $product = new ProductModel();
+            $product->setId($id);
+            
+            $pro = $product->getOne();
+        } 
+        require_once 'views/products/look.php';
+        
+    }
+
     public function manage()
     {
         Utils::isAdmin();
