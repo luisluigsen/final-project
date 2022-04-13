@@ -1,6 +1,6 @@
 <div class="col-md-8 pt-0 mb-3">
+    <h1 class="text-white d-flex justify-content-center">Manage Products</h1>
     <table class="table table-dark table-hover table-bordered border-success">
-        <h1 class="text-white bg-success pb-2 ps-2">Manage Products</h1>
         <?php if(isset($_SESSION['product'])&&$_SESSION['product']== 'complete'): ?>
             <div class="container">
                 <h2 class="text-success">The Product has been created correctly</h2>

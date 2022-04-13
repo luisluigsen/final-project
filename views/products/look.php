@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-footer bg-opacity d-flex ">
                     <div class="row justify-content-between">
-                        <a href="" class="btn btn-outline-success"><i class="fa fa-cart-arrow-down"></i></a>
+                        <a href="<?=base_url?>Cart/add&id=<?=$product->id?>" class="btn btn-outline-success"><i class="fa fa-cart-arrow-down"></i></a>
                         <span>
                             <p class="d-flex justify-content-center"><?=$product->price ?>€</p>
                         </span>
