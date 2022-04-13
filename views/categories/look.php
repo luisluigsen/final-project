@@ -1,39 +1,32 @@
 <?php if(isset($category)): ?>
 <div class="col-md-8 pt-0 mb-3">
-    <h1><?=$category->name?></h1>
+    <h1 class="text-light d-flex justify-content-center"><?=$category->name?></h1>
     <?php if($products->num_rows == 0): ?>
     <p>Don't have products to look</p>
     <?php else: ?>
-    <div class="container d-flex">
-        <div class="row">
-            <h1 class="text-white m-0">Algunos de nuestros productos</h1>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <?php while($product=$products->fetch_object()): ?>
-            <div class="col-4 p-2">
-                <div class="card h-100">
-                    <img class="card-img-top" src="<?=base_url?>uploads/<?=$product->image?>" alt="">
+    <div class="row">
+        <?php while($product=$products->fetch_object()): ?>
+        <div class="col-4 p-2">
+            <div class="card h-100 border-success">
+                <a href="<?=base_url?>Product/look&id=<?=$product->id?>" class="text-decoration-none text-dark">
+                    <img class="card-img-top img-fluid" src="<?=base_url?>uploads/<?=$product->image?>" alt="">
                     <div class="card-body">
                         <h5 class="card-title"><?=$product->name?></h5>
-                        <p class="card-text"><?=$product->description?></p>
                     </div>
-                    <div class="card-footer bg-opacity d-flex justify-content-between">
-                        <div class="row">
-                            <a href="" class="btn btn-outline-success">Go</a>
-                        </div>
-                        <div class="row">
+                    <div class="card-footer bg-opacity d-flex ">
+                        <div class="row justify-content-between">
+                            <a href="" class="btn btn-outline-success"><i class="fa fa-cart-arrow-down"></i></a>
                             <span>
-                                <p class="d-flex justify-content-center"><?=$product->price ?></p>
+                                <p class="d-flex justify-content-center"><?=$product->price ?>€</p>
                             </span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
-            <?php endwhile; ?>
         </div>
+        <?php endwhile; ?>
     </div>
+
 </div>
 <?php endif; ?>
 <?php else: ?>

@@ -11,9 +11,10 @@
     <title>Document</title>
 </head>
 
+
 <body class="bg-dark bg-gradient p-2">
     <!-- nav -->
-    <div class="conatiner">
+    <div class="conatiner-fluid ">
         <?php $categories = Utils::showCategories(); ?>
         <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
             <div class="container-fluid">
@@ -103,7 +104,7 @@
         <div class="jumbotron">
             <h1 class="display-3 text-white">T-shirts Store</h1>
             <p class="lead text-white">Don't miss it</p>
-            <hr class="my-2 bg-white">
+            <hr class="my-2 bg-success">
 
 
         </div>

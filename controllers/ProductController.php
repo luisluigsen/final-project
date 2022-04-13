@@ -20,7 +20,7 @@ class ProductController
             $product = new ProductModel();
             $product->setId($id);
             
-            $pro = $product->getOne();
+            $product = $product->getOne();
         } 
         require_once 'views/products/look.php';
         
