@@ -2,7 +2,14 @@
 
 class OrderController {
 
-    public function index(){
-        echo "controlador de order , action index";
+    public function make(){
+        require_once 'views/orders/make.php';
+    }
+
+    public function add(){
+
+        if(isset($_POST)){
+            
+        }
     }
 }

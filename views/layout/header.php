@@ -104,7 +104,7 @@
         <div class="jumbotron">
             <h1 class="display-3 text-white">T-shirts Store</h1>
             <p class="lead text-white">Don't miss it</p>
-            <hr class="my-2 bg-success">
+            <hr class="my-3 bg-light">
 
 
         </div>

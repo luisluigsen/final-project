@@ -32,5 +32,5 @@
         <?php $stats = Utils::statsCart();?>
     </table>
     <h3 class="text-light">Total Price <?=$stats['total']?>€</h3>
-    <a href="" class="btn btn-outline-success">Buy</a> 
+    <a href="<?=base_url?>Order/make" class="btn btn-outline-success">Buy</a> 
 </div>
