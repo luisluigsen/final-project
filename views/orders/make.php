@@ -18,7 +18,7 @@
             </div>
        </form>
        <?php else :?>
-       <div class="alert alert-success mt-2" role="alert">
+       <div class="alert alert-danger mt-2" role="alert">
            you need to be identified
        </div>
        <?php endif;?>
