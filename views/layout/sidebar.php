@@ -43,7 +43,19 @@
                                 </div>
                             </div>
                             <?php endif; ?>
-
                         </div>
                     </div>
+                            </br>
+                    <div class="card border border-success bg-dark pt-2">
+                        <div class="card-header text-light">
+                            <h3 class="text-light">My Car</h3>
+                        </div>
+                        <div class="card-body text-light">
+                        <?php $stats=Utils::statsCart();?>
+                         <a href="<?=base_url?>Cart/index" class="text-decoration-none text-light"><h5><i class="fa fa-cart-plus" aria-hidden="true"></i> Your car</h5></a>
+                         <a href="<?=base_url?>Cart/index" class="text-decoration-none text-light"><h5><i class="fa fa-shopping-bag" aria-hidden="true"></i> Total: <?=$stats['total']?>€</h5></a>
+                         <a href="<?=base_url?>Cart/index" class="text-decoration-none text-light"><h5><i class="fa fa-star" aria-hidden="true"></i> Products(<?=$stats['count']?>)</h5></a>
+                        </div>        
+                    </div>           
                 </div>
+       

@@ -6,7 +6,7 @@
     <?php else: ?>
     <div class="row">
         <?php while($product=$products->fetch_object()): ?>
-        <div class="col-4 p-2">
+        <div class="col-sm-4 p-2">
             <div class="card h-100 border-success">
                 <a href="<?=base_url?>Product/look&id=<?=$product->id?>" class="text-decoration-none text-dark">
                     <img class="card-img-top img-fluid" src="<?=base_url?>uploads/<?=$product->image?>" alt="">
@@ -15,7 +15,7 @@
                     </div>
                     <div class="card-footer bg-opacity d-flex ">
                         <div class="row justify-content-between">
-                            <a href="" class="btn btn-outline-success"><i class="fa fa-cart-arrow-down"></i></a>
+                            <a href="<?=base_url?>Cart/add&id=<?=$product->id?>" class="btn btn-outline-success"><i class="fa fa-cart-arrow-down"></i></a>
                             <span>
                                 <p class="d-flex justify-content-center"><?=$product->price ?>€</p>
                             </span>
