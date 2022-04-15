@@ -150,6 +150,14 @@ class OrderModel
         return $orders->fetch_object();
     }
 
+    public function getAllByUser()
+    {
+        $sql=" SELECT o.*FROM orders o " 
+        . " WHERE o.user_id={$this->getUser_id()} ORDER BY id DESC ";
+        $orders = $this->db->query($sql);
+        return $orders;
+    }
+    
     public function getProductsByOrder($id)
     {
         // $sql = " SELECT *FROM products WHERE id IN "

@@ -29,15 +29,19 @@
                                 <div class="card-header">
                                 <h3><?= $_SESSION['identity']->name ?> <?= $_SESSION['identity']->surname ?> <i class="fas fa-home"></i></h3>
                                 </div>
+                            <?php endif; ?>
+                                <?php if(isset($_SESSION['admin'])): ?>
                                 <div class="card-body">
-                                    <a class="btn btn-outline-light border-0 " href="#"><i class="fas fa-shopping-cart"></i> Manage Orders</a>
+                                    <a class="btn btn-outline-light border-0" href="<?= base_url ?>Order/manage"><i class="fas fa-shopping-cart"></i> Manage Orders</a>
                                     <a class="btn btn-outline-light border-0" href="<?= base_url ?>Product/manage"><i class="fas fa-tags"></i> Manage Products</a>
                                     <a class="btn btn-outline-light border-0" href="<?= base_url ?>Category/index"><i class="fas fa-star"></i> Manage Categories </a>
                                 </div>
-                            <?php endif; ?>
-
+                                <?php else: ?>
+                                    <div class="card-body">
+                                    <a class="btn btn-outline-light border-0 " href="<?=base_url?>Order/my_orders"><i class="fas fa-shopping-cart"></i>My Orders</a>
+                                </div>
+                                <?php endif; ?>    
                             <?php if (isset($_SESSION['identity'])) : ?>
-
                                 <div class="card-footer">
                                     <a class="btn btn-outline-light border-0" href="<?= base_url ?>User/logout">End Session <i class="fas fa-arrow-right "></i></a>
                                 </div>

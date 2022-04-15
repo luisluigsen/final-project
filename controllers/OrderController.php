@@ -70,6 +70,12 @@ class OrderController {
 
     public function my_orders()
     {
+        Utils::identified();
+        $user_id = $_SESSION['identity']->id;
+        $order = new OrderModel();
+        $order->setUser_id($user_id);
+        $orders=$order->getAllByUser();
+
         require_once 'views/orders/my_orders.php';
     }
 }
