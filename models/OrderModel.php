@@ -141,6 +141,28 @@ class OrderModel
         return $orders->fetch_object();
     }
 
+    public function getOneByUser()
+    {
+        $sql=" SELECT o.id, o.cost FROM orders o " 
+        . " INNER JOIN orders_lines ol ON ol.order_id = o.id " 
+        . " WHERE o.user_id={$this->getUser_id()} ORDER BY id DESC LIMIT 1 ";
+        $orders = $this->db->query($sql);
+        return $orders->fetch_object();
+    }
+
+    public function getProductsByOrder($id)
+    {
+        // $sql = " SELECT *FROM products WHERE id IN "
+        //         . "(SELECT product_id FROM orders_lines WHERE order_id={$id})";
+
+        $sql = "SELECT pr.*, ol.units FROM products pr "
+                . "INNER JOIN orders_lines ol ON pr.id = ol.product_id "
+                . "WHERE ol.order_id={$id} ";
+
+        $products = $this->db->query($sql);
+        return $products;                
+    }
+
     public function save()
     {
     
@@ -167,10 +189,6 @@ class OrderModel
             $insert = "INSERT INTO orders_lines VALUES(NULL ,{$order_id},{$product->id},{$element['unit']})";
             $save=$this->db->query($insert);
 
-            // var_dump($product);
-            // var_dump($insert);
-            // echo $this->db->error;
-            // die();
         }
         $result = false;
         if ($save) {

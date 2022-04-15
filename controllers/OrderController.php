@@ -45,6 +45,7 @@ class OrderController {
                 $_SESSION['order']='failed';
             }
             header("Location:".base_url.'Order/confirm');
+
         }
         else
         {
@@ -54,6 +55,21 @@ class OrderController {
 
     public function confirm()
     {
+        if(isset($_SESSION['identity']))
+        {
+            $identity=$_SESSION['identity'];
+            $order= new OrderModel();
+            $order->setUser_id($identity->id);
+            $order = $order->getOneByUser();
+
+            $order_product = new OrderModel();
+            $products=$order_product->getProductsByOrder($order->id);
+        }
         require_once "views/orders/confirm.php";
+    }
+
+    public function my_orders()
+    {
+        require_once 'views/orders/my_orders.php';
     }
 }
