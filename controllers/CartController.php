@@ -5,7 +5,14 @@ class CartController
 
     public function index()
     {
-        $cart = $_SESSION['cart'];
+        if(isset($_SESSION['cart'])&& count($_SESSION['cart'])>=1)
+        {
+            $cart = $_SESSION['cart'];
+        }
+        else
+        {
+            $cart = array();
+        } 
         require_once "views/cart/index.php";
     }
     
@@ -47,14 +54,46 @@ class CartController
         header('Location:'.base_url.'Cart/index');
     }
 
-    public function remove()
+    public function delete()
     {
-        
+        if(isset($_GET['index']))
+        {
+            $index=$_GET['index'];
+            unset($_SESSION['cart'][$index]);
+        }
+        header('Location:'.base_url.'Cart/index');
     }
 
-    public function delete_all()
+    public function deleteAll()
     {
         unset($_SESSION['cart']);
         header('Location:'.base_url.'Cart/index');
     }
+
+    public function plus()
+    {
+        if(isset($_GET['index']))
+        {
+            $index=$_GET['index'];
+            $_SESSION['cart'][$index]['unit']++;
+        }
+        header('Location:'.base_url.'Cart/index');
+    }
+
+    public function minus()
+    {
+        if(isset($_GET['index']))
+        {
+            $index=$_GET['index'];
+            $_SESSION['cart'][$index]['unit']--;
+
+            if($_SESSION['cart'][$index]['unit']==0)
+            {
+                unset($_SESSION['cart'][$index]);
+            }
+        }
+        header('Location:'.base_url.'Cart/index');
+    }
+
+
 }
