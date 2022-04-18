@@ -60,4 +60,23 @@
             }
             return $stats;    
         }
+
+        public static function showStatus($status)
+        {   
+            $value = 'outstanding';
+            if($status == 'confirm')
+            {
+                $value = 'outstanding';
+            }elseif($status == 'preparation')
+            {
+                $value = 'In preparation';
+            }elseif($status == 'ready')
+            {
+                $value = 'ready to send';
+            }elseif($status == 'sended')
+            {
+                $value = 'sended';
+            }
+            return $value;
+        }
     }

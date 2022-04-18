@@ -206,6 +206,20 @@ class OrderModel
  
     }
 
+    public function updateOne()
+    {
+        $sql =  "UPDATE orders SET  status= '{$this->getStatus()}' ";
+        $sql .="WHERE id= {$this->getId()};";   
+         
+        $save = $this->db->query($sql);
+      
+        $result = false;
+    
+        if ($save) {
+            $result = true;
+        }
+        return $result;
+    }
 
 
 }

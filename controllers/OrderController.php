@@ -78,4 +78,59 @@ class OrderController {
 
         require_once 'views/orders/my_orders.php';
     }
+
+    public function detail()
+    {
+        Utils::identified();
+
+        if(isset($_GET['id']))
+        {
+            $id = $_GET['id'];
+            $order= new OrderModel();
+            $order->setId($id);
+            $order = $order->getOne();
+
+            $order_product = new OrderModel();
+            $products=$order_product->getProductsByOrder($id);
+
+            require_once 'views/orders/details.php';
+
+        }else
+        {
+            header("Location:".base_url.'Order/my_orders');
+        }
+
+    }
+
+    public function manage()
+    {
+        Utils::isAdmin();
+        $manage=true;
+
+        $order=new OrderModel();
+        $orders=$order->getAll();
+
+        require_once 'views/orders/my_orders.php';
+    }
+
+    public function status()
+    {
+        if(isset($_POST['order_id'])&& isset($_POST['status']))
+        {
+            //capture data form
+            $status= $_POST['status'];
+            $id = $_POST['order_id'];
+
+            // update order
+            $order = new OrderModel();
+            $order->setId($id);
+            $order->setStatus($status);
+            $order->updateOne();
+
+            header("Location:".base_url.'Order/detail&id='.$id);
+        }else
+        {
+            header("Location:".base_url);
+        }
+    }
 }
