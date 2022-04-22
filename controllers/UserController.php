@@ -58,6 +58,7 @@ class UserController
             if($identity && is_object($identity))
             {
                 $_SESSION['identity'] = $identity;
+                
                 if($identity->role == 'admin')
                 {
                     $_SESSION['admin'] = true;

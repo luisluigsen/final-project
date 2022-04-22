@@ -35,11 +35,12 @@ class CartController
                 }
             }
         }
-            if(!isset($counter) || ($counter == 0)){
+        
+        if(!isset($counter) || ($counter == 0)){
 
-                $product = new ProductModel();
-                $product->setId($product_id);
-                $product=$product->getOne();
+            $product = new ProductModel();
+            $product->setId($product_id);
+            $product=$product->getOne();
 
                     if(is_object($product))
                     {
@@ -49,7 +50,7 @@ class CartController
                             "unit"      => 1,
                             "product"   => $product );
                     }
-            }
+        }
         
         header('Location:'.base_url.'Cart/index');
     }

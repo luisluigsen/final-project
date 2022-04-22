@@ -47,7 +47,8 @@
         {
             $stats = array(
                 'count'=> 0,
-                'total'=> 0);
+                'total'=> 0
+            );
             
             if(isset($_SESSION['cart']))
             {
